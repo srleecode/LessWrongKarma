@@ -9,7 +9,7 @@ require.config({
     jquery: 'Lib/jquery-1.12.0.min',
     bootstrap: 'Lib/bootstrap-3.3.6.min',
     highcharts: 'Lib/highcharts-4.2.1.min',
-    drilldown: 'lib/drilldown',
+    drilldown: 'Lib/drilldown',
     moment: 'Lib/moment-2.11.2.min',
     Q: 'Lib/Q-1.4.1',
     YQL: 'App/YQL',
