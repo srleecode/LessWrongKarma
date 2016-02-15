@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: TotalsChart.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: TotalsChart.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * TotalsChart Module
+ * @module TotalsChart
+ */
+define(['jquery', 'highcharts'], function($, highcharts) {
+  var that = {};
+  var chart = null;
+  var defaultSubTitle = 'Click the slices to drill down further';
+  var drilldownSubTitle = null;
+
+  that.getChart = function() {
+    return chart;
+  };
+  /**
+   * Adds a pie chart showing total negative and positive karma points.
+   * It allows drill down to see where the points originate from, e.g. comments or Main posts
+   * @param {String} id id to render the chart to
+   * @param {Object} commentsStats statistics for the comments, e.g. total points
+   * @param {Object} discussionPostStats statistics for the discussion posts, e.g. total points
+   * @param {Object} mainPostStats statisticsfor the main posts, e.g. total points
+   * @param {Object} totalsStats statistics for comments, discussion posts, main posts combined
+   * @return {TotalsChart_L5.highcharts.Chart} pie char
+   * @memberOf module:TotalsChart
+   */
+  that.addChart = function(id, commentsStats, discussionPostStats, mainPostStats, totalsStats) {
+    chart = new highcharts.Chart({
+      chart: {
+        renderTo: id,
+        type: 'pie',
+        events: {
+          drilldown: function() {
+            chart.setTitle(null, {text: drilldownSubTitle});
+          },
+          drillup: function() {
+            chart.setTitle(null, {text: defaultSubTitle});
+          }
+        }
+      },
+      title: {
+        text: null,
+        style: {
+          display: 'none'
+        }
+      },
+      subtitle: {
+        text: defaultSubTitle
+      },
+      plotOptions: {
+        series: {
+          dataLabels: {
+            enabled: true,
+            format: '{point.name}: {point.y}%'
+          }
+        }
+      },
+      tooltip: {
+        snap: 0,
+        backgroundColor: '#FCFFC5',
+        borderColor: 'black',
+        borderRadius: 10,
+        borderWidth: 3,
+        headerFormat: '&lt;span style="font-size:11px">{series.name}&lt;/span>&lt;br>',
+        pointFormat: '{point.name} Score: {point.score} which is &lt;b>{point.y}%&lt;/b> of total&lt;br/>'
+      },
+      credits: {
+        enabled: false
+      },
+      series: [{
+        name: 'Total Score',
+        colorByPoint: true,
+        data: [{
+          name: 'Positive',
+          color: 'rgb(34, 139, 34)',
+          y: totalsStats.percentPositive,
+          score: totalsStats.positiveScore,
+          drilldown: 'Positive'
+        }, {
+          name: 'Negative',
+          color: 'rgb(178, 34, 34)',
+          y: totalsStats.percentNegative,
+          score: totalsStats.negativeScore,
+          drilldown: 'Negative'
+        }]
+      }],
+      drilldown: {
+        series: [{
+          name: 'Positive',
+          id: 'Positive',
+          data: [
+            {
+              name: 'Comment',
+              y: totalsStats.commentPercentPositive,
+              color: 'rgba(64, 64, 64, 0.5)',
+              score: commentsStats.positiveTotalScore
+            },
+            {
+              name: 'Discussion Post',
+              y: totalsStats.discussionPostPercentPositive,
+              color: 'rgba(109, 189, 214, 0.5)',
+              score: discussionPostStats.positiveTotalScore},
+            {
+              name: 'Main Post',
+              y: totalsStats.mainPostPercentPositive,
+              color: 'rgba(183, 20, 39, 0.5)',
+              score: mainPostStats.positiveTotalScore
+            }
+          ]
+        }, {
+          name: 'Negative',
+          id: 'Negative',
+          data: [
+            {
+              name: 'Comment',
+              y: totalsStats.commentPercentNegative,
+              color: 'rgba(64, 64, 64, 0.5)',
+              score: commentsStats.negativeTotalScore
+            },
+            {
+              name: 'Discussion Post',
+              y: totalsStats.discussionPostPercentNegative,
+              color: 'rgba(109, 189, 214, 0.5)',
+              score: discussionPostStats.negativeTotalScore
+            },
+            {
+              name: 'Main Post',
+              y: totalsStats.mainPostPercentNegative,
+              color: 'rgba(183, 20, 39, 0.5)',
+              score: mainPostStats.negativeTotalScore
+            }
+          ]
+        }]
+      }
+    });
+    return chart;
+  };
+  return that;
+});
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-ChartCreator.html">ChartCreator</a></li><li><a href="module-CommentScraper.html">CommentScraper</a></li><li><a href="module-CommentType.html">CommentType</a></li><li><a href="module-PostScraper.html">PostScraper</a></li><li><a href="module-PostType.html">PostType</a></li><li><a href="module-ProportionsChart.html">ProportionsChart</a></li><li><a href="module-Rounder.html">Rounder</a></li><li><a href="module-TimeSeriesChart.html">TimeSeriesChart</a></li><li><a href="module-TotalsChart.html">TotalsChart</a></li><li><a href="module-YQL.html">YQL</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Feb 11 2016 11:06:31 GMT+1100 (AUS Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

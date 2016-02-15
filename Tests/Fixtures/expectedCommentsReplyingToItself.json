@@ -1,0 +1,146 @@
+[
+  {
+    "y": 1,
+    "x": 1423705690000,
+    "link": "http://lesswrong.com/lw/lpd/human_minds_are_fragile/byod",
+    "author": "diegocaleiro",
+    "id": "t1_byod",
+    "commentType": "Parent"
+  },
+  {
+    "y": 1,
+    "x": 1424086157000,
+    "link": "http://lesswrong.com/lw/lpd/human_minds_are_fragile/bz9a",
+    "author": "qsz",
+    "id": "t1_bz9a",
+    "commentType": "Leaf"
+  },
+  {
+    "y": 2,
+    "x": 1423843660000,
+    "link": "http://lesswrong.com/lw/lpp/a_long_comment/byx7",
+    "author": "qsz",
+    "id": "t1_byx7",
+    "commentType": "Leaf"
+  },
+  {
+    "y": 12,
+    "x": 1423478721000,
+    "link": "http://lesswrong.com/lw/lov/open_thread_feb_9_feb_15_2015/by7l",
+    "author": "CBHacking",
+    "id": "t1_by7l",
+    "commentType": "Parent"
+  },
+  {
+    "y": 0,
+    "x": 1423565517000,
+    "link": "http://lesswrong.com/lw/lov/open_thread_feb_9_feb_15_2015/bye8",
+    "author": "qsz",
+    "id": "t1_bye8",
+    "commentType": "Leaf"
+  },
+  {
+    "y": 0,
+    "x": 1423061350000,
+    "link": "http://lesswrong.com/lw/lnu/questions_from_an_imaginary_statistical_methods/bxnp",
+    "author": "qsz",
+    "id": "t1_bxnp",
+    "commentType": "Leaf"
+  },
+  {
+    "y": 2,
+    "x": 1421669063000,
+    "link": "http://lesswrong.com/lw/lk6/open_thread_jan_19_jan_25_2015/bvnq",
+    "author": "gjm",
+    "id": "t1_bvnq",
+    "commentType": "Parent"
+  },
+  {
+    "y": 0,
+    "x": 1421920830000,
+    "link": "http://lesswrong.com/lw/lk6/open_thread_jan_19_jan_25_2015/bvzu",
+    "author": "qsz",
+    "id": "t1_bvzu",
+    "commentType": "Leaf"
+  },
+  {
+    "y": 4,
+    "x": 1421158447000,
+    "link": "http://lesswrong.com/lw/lj1/open_thread_jan_12_jan_18_2015/buxh",
+    "author": "Barry_Cotter",
+    "id": "t1_buxh",
+    "commentType": "Parent"
+  },
+  {
+    "y": 4,
+    "x": 1421243319000,
+    "link": "http://lesswrong.com/lw/lj1/open_thread_jan_12_jan_18_2015/bv2t",
+    "author": "qsz",
+    "id": "t1_bv2t",
+    "commentType": "Leaf"
+  },
+  {
+    "y": 2,
+    "x": 1416287535000,
+    "link": "http://lesswrong.com/lw/la4/is_this_dark_arts_and_if_it_is_it_justified/bm9n",
+    "author": "Gleb_Tsipursky",
+    "id": "t1_bm9n",
+    "commentType": "Parent"
+  },
+  {
+    "y": 3,
+    "x": 1416306633000,
+    "link": "http://lesswrong.com/lw/la4/is_this_dark_arts_and_if_it_is_it_justified/bmbe",
+    "author": "qsz",
+    "id": "t1_bmbe",
+    "commentType": "Leaf"
+  },
+  {
+    "y": 5,
+    "x": 1413906579000,
+    "link": "http://lesswrong.com/lw/l4z/open_thread_oct_20_oct_26_2014/bhhc",
+    "author": "palladias",
+    "id": "t1_bhhc",
+    "commentType": "Parent"
+  },
+  {
+    "y": 7,
+    "x": 1413969193000,
+    "link": "http://lesswrong.com/lw/l4z/open_thread_oct_20_oct_26_2014/bhl2",
+    "author": "qsz",
+    "id": "t1_bhl2",
+    "commentType": "Leaf"
+  },
+  {
+    "y": 6,
+    "x": 1411280847000,
+    "link": "http://lesswrong.com/lw/l0j/street_action_stop_existential_risks_union_square/bd0o",
+    "author": "John_Maxwell_IV",
+    "id": "t1_bd0o",
+    "commentType": "Parent"
+  },
+  {
+    "y": 5,
+    "x": 1411381756000,
+    "link": "http://lesswrong.com/lw/l0j/street_action_stop_existential_risks_union_square/bd5p",
+    "author": "qsz",
+    "id": "t1_bd5p",
+    "commentType": "Leaf"
+  },
+  {
+    "y": 3,
+    "x": 1408366875000,
+    "link": "http://lesswrong.com/lw/ks8/a_holy_grail_humor_theory_in_one_page/b8gy",
+    "author": "qsz",
+    "id": "t1_b8gy",
+    "commentType": "Parent"
+  },
+  {
+    "y": 1,
+    "x": 1408369407000,
+    "link": "http://lesswrong.com/lw/ks8/a_holy_grail_humor_theory_in_one_page/b8h1",
+    "author": "qsz",
+    "id": "t1_b8h1",
+    "commentType": "Leaf"
+  }
+]

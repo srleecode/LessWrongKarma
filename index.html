@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LessWrong Karma</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script data-main="Scripts/App/RequireConfig" src="Scripts/Lib/require-2.1.22.min.js" type="text/javascript"></script>
+        <link href="Styles/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" href="Images/favicon.ico" />
+        <link href="Styles/FontAwesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="Styles/cssreset.css" rel="stylesheet" type="text/css"/>
+        <link href="Styles/main.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header class="header">
+                <img class="logo" src="Images/logo_trans.png" alt="Less Wrong"/>
+            </header>
+            <div class="input-group input-group-margin">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" id="getKarmaStatsBtn" type="button">Go!</button>
+                </span>
+                <input id="selectedUser" type="text" class="form-control" placeholder="Enter user, eg. ScottL">
+            </div>
+            <div id="content" class="hidden">
+                <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                    <li class="active"><a href="#timeSeries" data-toggle="tab">Time Series</a></li>
+                    <li><a href="#proportions" data-toggle="tab">Proportions</a></li>
+                    <li><a href="#totals" data-toggle="tab">Totals</a></li>
+                </ul>
+                <div id="my-tab-content" class="tab-content">
+                    <div class="tab-pane active" id="timeSeries">
+                        <div id="timeSeriesChart"></div>
+                    </div>
+                    <div class="tab-pane" id="proportions">
+                        <div id="proportionsChart"></div>
+                    </div>
+                    <div class="tab-pane" id="totals">
+                        <div id="totalsChart"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="loading" class="row-fluid hidden">
+                <div class="span12 text-center">
+                Scraping Information. Please Wait ... <i class="fa fa-refresh fa-spin fa-2x"></i>
+                </div>
+            </div>
+            <div id="userNotFound" class="row-fluid hidden">
+                <div class="span12 text-center">
+                    No comments or posts were found for the selected user. Please check the spelling.
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

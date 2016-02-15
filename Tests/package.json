@@ -1,0 +1,30 @@
+{
+  "name": "less_wrong_karma",
+  "version": "1.0.0",
+  "description": "tests",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^1.10.3",
+    "eslint-config-google": "^0.3.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^1.1.1",
+    "gulp-jasmine": "^2.2.1",
+    "gulp-shell": "^0.5.2",
+    "jasmine": "^2.4.1",
+    "jasmine-jquery": "^2.1.1",
+    "jquery": "^2.2.0",
+    "jsdoc": "^3.4.0",
+    "karma": "^0.13.19",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine-html-reporter": "^0.2.0",
+    "karma-requirejs": "^0.2.4",
+    "q": "^1.4.1",
+    "requirejs": "^2.1.22"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
