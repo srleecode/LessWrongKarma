@@ -20,10 +20,6 @@ body {
     overflow-y: hidden;
 }
 
-.wrapper > div {
-  flex: 1;
-}
-
 .header {
     background: url("../Images/header_background.jpg") no-repeat;
     min-height: 103px;
