@@ -22,7 +22,8 @@ define(['jquery', 'highcharts'], function($, highcharts) {
     chart = new highcharts.Chart({
       chart: {
         renderTo: id,
-        type: 'column'
+        type: 'column',
+        plotBorderWidth: 2
       },
       title: {
         text: null,

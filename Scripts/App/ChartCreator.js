@@ -3,9 +3,9 @@
  * @module ChartCreator
  */
 define(['jquery', 'Q', 'CommentsScraper', 'PostsScraper', 'PostType',
-  'TimeSeriesChart', 'ProportionsChart', 'TotalsChart', 'Rounder'],
-function($, q, commentsScraper, postsScraper, postType, timeSeriesChart,
-proportionsChart, totalsChart, rounder) {
+  'TimeSeriesSmallPointsChart', 'TimeSeriesLargePointsChart', 'ProportionsChart', 'TotalsChart', 'Rounder'],
+function($, q, commentsScraper, postsScraper, postType, timeSeriesSmallPointsChart,
+timeSeriesLargePointsChart, proportionsChart, totalsChart, rounder) {
   var that = {};
   function getStats(karmaArray) {
     var totals = {
@@ -87,8 +87,8 @@ proportionsChart, totalsChart, rounder) {
         };
         $('#loading').addClass('hidden');
         $('#content').removeClass('hidden');
-
-        timeSeriesChart.addChart('timeSeriesChart', comments, discussionPosts, mainPosts);
+        timeSeriesSmallPointsChart.addChart('timeSeriesSmallPointsChart', comments, discussionPosts);
+        timeSeriesLargePointsChart.addChart('timeSeriesLargePointsChart', mainPosts);
         proportionsChart.addChart('proportionsChart', commentStats, discussionPostStats, mainPostStats);
         totalsChart.addChart('totalsChart', commentStats, discussionPostStats, mainPostStats, totalStats);
       }

@@ -21,6 +21,14 @@ define(['jquery', 'YQL', 'CommentType', 'Q', 'moment'], function($, yql, Comment
     var author = authorNodes.last().text();
     var score = parseInt($('#score_' + id, commentNode).first().text(), 10);
     var link = $('#permalink_' + id, commentNode).first().attr('href');
+    var title = $('a.title', commentNode).first().text();
+    var blurb = $('.md', commentNode).first().text();
+    // lines up the blurb length somewhat with the title or at least the date if it's longer than the title.
+    if (title.length >= 26) {
+      blurb = blurb.substring(0, title.length - 4) + ' ...';
+    } else {
+      blurb = blurb.substring(0, 22) + ' ...';
+    }
     var date = $('.comment-date', commentNode).first().text().replace('*', '').trim();
     var type = '';
     // finds out if the comment is being replied to by the user, i.e. a parent comment, or not (a leaf)
@@ -34,6 +42,8 @@ define(['jquery', 'YQL', 'CommentType', 'Q', 'moment'], function($, yql, Comment
       y: score,
       x: moment.utc(date, 'DD MMMM YYYY hh:mm:ssA').valueOf(),
       link: link,
+      title: title,
+      blurb: blurb,
       author: author,
       id: id,
       commentType: type
