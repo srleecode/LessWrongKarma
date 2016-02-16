@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script data-main="Scripts/App/RequireConfig" src="Scripts/Lib/require-2.1.22.min.js" type="text/javascript"></script>
         <link href="Styles/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link rel="shortcut icon" href="Images/favicon.ico" />
         <link href="Styles/FontAwesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link href="Styles/cssreset.css" rel="stylesheet" type="text/css"/>
         <link href="Styles/main.css" rel="stylesheet" type="text/css"/>
@@ -24,13 +23,17 @@
             </div>
             <div id="content" class="hidden">
                 <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                    <li class="active"><a href="#timeSeries" data-toggle="tab">Time Series</a></li>
+                    <li class="active"><a href="#timeSeriesSmallPoints" data-toggle="tab">Comments and Discussion Posts</a></li>
+                    <li><a href="#timeSeriesLargePoints" data-toggle="tab">Main Posts</a></li>
                     <li><a href="#proportions" data-toggle="tab">Proportions</a></li>
                     <li><a href="#totals" data-toggle="tab">Totals</a></li>
                 </ul>
                 <div id="my-tab-content" class="tab-content">
-                    <div class="tab-pane active" id="timeSeries">
-                        <div id="timeSeriesChart"></div>
+                    <div class="tab-pane active" id="timeSeriesSmallPoints">
+                        <div id="timeSeriesSmallPointsChart"></div>
+                    </div>
+                    <div class="tab-pane" id="timeSeriesLargePoints">
+                        <div id="timeSeriesLargePointsChart"></div>
                     </div>
                     <div class="tab-pane" id="proportions">
                         <div id="proportionsChart"></div>

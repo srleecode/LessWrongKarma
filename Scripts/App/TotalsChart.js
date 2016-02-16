@@ -23,24 +23,22 @@ define(['jquery', 'highcharts'], function($, highcharts) {
    * @memberOf module:TotalsChart
    */
   that.addChart = function(id, commentsStats, discussionPostStats, mainPostStats, totalsStats) {
+    var title = 'Total Score: ' + (totalsStats.positiveScore + totalsStats.negativeScore);
     chart = new highcharts.Chart({
       chart: {
         renderTo: id,
         type: 'pie',
         events: {
           drilldown: function() {
-            chart.setTitle(null, {text: drilldownSubTitle});
+            chart.setTitle(title, {text: drilldownSubTitle});
           },
           drillup: function() {
-            chart.setTitle(null, {text: defaultSubTitle});
+            chart.setTitle(title, {text: defaultSubTitle});
           }
         }
       },
       title: {
-        text: null,
-        style: {
-          display: 'none'
-        }
+        text: title
       },
       subtitle: {
         text: defaultSubTitle

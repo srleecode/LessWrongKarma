@@ -1,6 +1,6 @@
 /**
  * TimeSeriesChart Module
- * @module TimeSeriesChart
+ * @module TimeSeriesSmallPointsChart
  */
 define(['jquery', 'highcharts'], function($, highcharts) {
   var that = {};
@@ -9,20 +9,20 @@ define(['jquery', 'highcharts'], function($, highcharts) {
     return chart;
   };
   /**
-   * Adds a scatter chart showing comments, discussion posts and main posts across a time series
+   * Adds a scatter chart showing comments and discussion posts across a time series
    * @param {Number} id id to render the chart to
    * @param {Array} commentsData chart points for the comments
    * @param {Array} discussionPostData chart points for the discussion posts
-   * @param {Array} mainPostData chart points for the main posts
    * @return {TimeSeriesChart_L5.highcharts.Chart} scatter chart
-   * @memberOf module:TimeSeriesChart
+   * @memberOf module:TimeSeriesSmallPointsChart
    */
-  that.addChart = function(id, commentsData, discussionPostData, mainPostData) {
+  that.addChart = function(id, commentsData, discussionPostData) {
     chart = new highcharts.Chart({
       chart: {
         renderTo: id,
         type: 'scatter',
-        zoomType: 'xy'
+        zoomType: 'xy',
+        plotBorderWidth: 2
       },
       title: {
         text: null,
@@ -37,16 +37,11 @@ define(['jquery', 'highcharts'], function($, highcharts) {
       xAxis: {
         type: 'datetime'
       },
-      yAxis: [{
-        title: {
-          text: 'Main Posts  Score'
-        },
-        opposite: true
-      }, {
+      yAxis: {
         title: {
           text: 'Comments & Discussion Posts Score'
         }
-      }],
+      },
       tooltip: {
         snap: 0,
         crosshairs: [true, true],
@@ -55,7 +50,7 @@ define(['jquery', 'highcharts'], function($, highcharts) {
         borderRadius: 10,
         borderWidth: 3,
         headerFormat: '<b>{series.name} Score : {point.y}</b><br>',
-        pointFormat: '{point.x:%a %d %b %I:%M:%S %p}'
+        pointFormat: '{point.title}<br>{point.x:%a %d %b %I:%M:%S %p}<br>{point.blurb}'
       },
       plotOptions: {
         series: {
@@ -78,25 +73,17 @@ define(['jquery', 'highcharts'], function($, highcharts) {
         color: 'rgba(64,64,64, 0.5)',
         allowPointSelect: true,
         name: 'Comment',
-        data: commentsData,
-        yAxis: 1
+        data: commentsData
       },
       {
         color: 'rgba(109,189,214, 0.5)',
         allowPointSelect: true,
         name: 'Discussion Post',
-        data: discussionPostData,
-        yAxis: 1
-      },
-      {
-        color: 'rgba(183,20,39, 0.5)',
-        allowPointSelect: true,
-        name: 'Main Post',
-        data: mainPostData,
-        yAxis: 0
+        data: discussionPostData
       }]
     });
     return chart;
   };
   return that;
 });
+

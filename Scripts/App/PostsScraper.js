@@ -15,6 +15,7 @@ define(['jquery', 'YQL', 'PostType', 'Q', 'moment'], function($, yql, PostType, 
   that.getPostObj = function(header, meta) {
     var postLink = 'http://lesswrong.com/r/discussion' + $('a', header).attr('href');
     var postType = '';
+    var title = $('a', header).text();
     var metaNode = $(meta)[0];
     var date = $('.date', metaNode).text();
     var scoreNode = $('.votes > :nth-child(1)', metaNode);
@@ -34,6 +35,7 @@ define(['jquery', 'YQL', 'PostType', 'Q', 'moment'], function($, yql, PostType, 
           x: moment.utc(date, 'DD MMMM YYYY hh:mm:ssA').valueOf(),
           id: id,
           link: postLink,
+          title: title,
           type: postType
         };
         return karma;
