@@ -3,9 +3,11 @@
  * @module ChartCreator
  */
 define(['jquery', 'Q', 'CommentsScraper', 'PostsScraper', 'PostType',
-  'TimeSeriesSmallPointsChart', 'TimeSeriesLargePointsChart', 'ProportionsChart', 'TotalsChart', 'Rounder'],
+  'TimeSeriesSmallPointsChart', 'TimeSeriesLargePointsChart', 'ProportionsChart', 
+  'TotalsChart', 'TimeSeriesCumulativeChart', 'LoadingTableUpdater', 'Rounder'],
 function($, q, commentsScraper, postsScraper, postType, timeSeriesSmallPointsChart,
-timeSeriesLargePointsChart, proportionsChart, totalsChart, rounder) {
+  timeSeriesLargePointsChart, proportionsChart, totalsChart, timeSeriesCumulativeChart, 
+  loadingTableUpdater, rounder) {
   var that = {};
   function getStats(karmaArray) {
     var totals = {
@@ -32,17 +34,65 @@ timeSeriesLargePointsChart, proportionsChart, totalsChart, rounder) {
     totals.points = totals.positiveTotalScore + Math.abs(totals.negativeTotalScore);
     return totals;
   }
+  
+  function createCumulativeData (commentsData, discussionPostsData, mainPostsData) {
+    var data = [];
+    var point = {};
+    var totalScore = 0;
+    commentsData.forEach(function(comment) {
+      point = {
+        score: comment.y,
+        x: comment.x,
+        link: comment.link,
+        title: comment.title,
+        blurb: comment.blurb,
+        type: 'Comment'
+      };
+      data.push(point);
+    });
+    discussionPostsData.forEach(function(discussionPost) {
+      point = {
+        score: discussionPost.y,
+        x: discussionPost.x,
+        link: discussionPost.link,
+        title: discussionPost.title,
+        type: 'Discussion Post'
+      };
+      data.push(point);
+    });
+    mainPostsData.forEach(function(mainPost) {
+      point = {
+        score: mainPost.y,
+        x: mainPost.x,
+        link: mainPost.link,
+        title: mainPost.title,
+        type: 'Main Post'
+      };
+      data.push(point);
+    });
+    // sorts by the date it was posted
+    data.sort(function(a,b) {
+      return a.x - b.x;
+    });
+    data.forEach(function(point) {
+      totalScore += point.score;
+      point.y = totalScore;
+    });
+    return data;
+  }
   /**
    * Creates a time series scatter chart, column proporitions chart and total pie chart for karma information from a given user
    * @param {String} user user to retrieve comment, discussion post and main post information to create the charts.
    * @memberOf module:ChartCreator
    */
   that.createCharts = function(user) {
+    loadingTableUpdater.resetTable();
     $('#getKarmaStatsBtn').prop('disabled', true);
     $('#selectedUser').prop('disabled', true);
     $('#loading').removeClass('hidden');
     $('#userNotFound').addClass('hidden');
     $('#content').addClass('hidden');
+    
     q.all([commentsScraper.scrapeUserComments(user), postsScraper.scrapeUserPosts(user)])
     .then(function(data) {
       if (data[0].length === 0 && data[1].length === 0) {
@@ -91,10 +141,12 @@ timeSeriesLargePointsChart, proportionsChart, totalsChart, rounder) {
         timeSeriesLargePointsChart.addChart('timeSeriesLargePointsChart', mainPosts);
         proportionsChart.addChart('proportionsChart', commentStats, discussionPostStats, mainPostStats);
         totalsChart.addChart('totalsChart', commentStats, discussionPostStats, mainPostStats, totalStats);
+        timeSeriesCumulativeChart.addChart('timeSeriesCumulativeChart', createCumulativeData(comments, discussionPosts, mainPosts));
       }
       $('#getKarmaStatsBtn').prop('disabled', false);
       $('#selectedUser').prop('disabled', false);
     });
   };
+
   return that;
 });

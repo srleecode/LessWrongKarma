@@ -67,3 +67,10 @@ a, a:focus, a:hover  {
 .pill-content > .active {
     height: auto;       
 } 
+
+table.text-center th {
+    text-align: center;
+}
+.table-squished {
+    width: auto;
+}

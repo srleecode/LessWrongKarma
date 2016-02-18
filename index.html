@@ -21,11 +21,12 @@
                     <button class="btn btn-default" id="getKarmaStatsBtn" type="button">Go!</button>
                 </span>
                 <input id="selectedUser" type="text" class="form-control" placeholder="Enter user, eg. ScottL">
-            </div>
+            </div>   
             <div id="content" class="hidden">
                 <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                    <li class="active"><a href="#timeSeriesSmallPoints" data-toggle="tab">Comments and Discussion Posts</a></li>
-                    <li><a href="#timeSeriesLargePoints" data-toggle="tab">Main Posts</a></li>
+                    <li class="active"><a href="#timeSeriesSmallPoints" data-toggle="tab">Time Series Comments and Discussion Posts</a></li>
+                    <li><a href="#timeSeriesLargePoints" data-toggle="tab">Time Series Main posts</a></li>
+                    <li><a href="#timeSeriesCumulative" data-toggle="tab">Time Series Cumulative</a></li>
                     <li><a href="#proportions" data-toggle="tab">Proportions</a></li>
                     <li><a href="#totals" data-toggle="tab">Totals</a></li>
                 </ul>
@@ -36,6 +37,9 @@
                     <div class="tab-pane" id="timeSeriesLargePoints">
                         <div id="timeSeriesLargePointsChart"></div>
                     </div>
+                    <div class="tab-pane" id="timeSeriesCumulative">
+                        <div id="timeSeriesCumulativeChart"></div>
+                    </div>
                     <div class="tab-pane" id="proportions">
                         <div id="proportionsChart"></div>
                     </div>
@@ -44,10 +48,36 @@
                     </div>
                 </div>
             </div>
-            <div id="loading" class="row-fluid hidden">
-                <div class="span12 text-center">
-                Scraping Information. Please Wait ... <i class="fa fa-refresh fa-spin fa-2x"></i>
-                </div>
+            <div id="loading" class="row-fluid hidden center-block">
+                <table class="table table-bordered text-center table-squished">
+                    <thead >
+                       <tr >
+                          <th>Type</th>
+                          <th>Last Scraped Element Posted Date</th>
+                          <th>Number Scraped</th>
+                          <th>Scraped Score</th>
+                          <th>Status</th>
+                       </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr id="commentRow" class="active">
+                            <td>Comments</td>
+                            <td id="lastScraped">N/A</td>
+                            <td id="numScraped">0</td>
+                            <td id="currScore">0</td>
+                            <td id="status"><i class="fa fa-cog fa-spin"></td>
+                        </tr>
+
+                        <tr id="postRow" class="active">
+                            <td>Posts</td>
+                            <td id="lastScraped">N/A</td>
+                            <td id="numScraped">0</td>
+                            <td id="currScore">0</td>
+                            <td id="status"><i class="fa fa-cog fa-spin"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div id="userNotFound" class="row-fluid hidden">
                 <div class="span12 text-center">
@@ -56,4 +86,5 @@
             </div>
         </div>
     </body>
+
 </html>
