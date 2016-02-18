@@ -50,7 +50,7 @@ define(['jquery', 'highcharts'], function($, highcharts) {
         borderRadius: 10,
         borderWidth: 3,
         headerFormat: '<b>{series.name} Score : {point.y}</b><br>',
-        pointFormat: '{point.title}<br>{point.x:%a %d %b %I:%M:%S %p}<br>{point.blurb}'
+        pointFormat: '{point.title}<br>{point.x:%a %d %b %Y %I:%M:%S %p}<br>{point.blurb}'
       },
       plotOptions: {
         series: {
