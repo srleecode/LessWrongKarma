@@ -2,9 +2,10 @@
  * PostScraper Module
  * @module PostScraper
  */
-define(['jquery', 'YQL', 'PostType', 'Q', 'moment'], function($, yql, PostType, q, moment) {
+define(['jquery', 'YQL', 'PostType', 'Q', 'moment', 'LoadingTableUpdater'], function($, yql, PostType, q, moment, loadingTableUpdater) {
   var that = {};
   var postsKarma = [];
+  var postsTableRowId = 'postRow';
   /**
    * Parses and retrieves post information from apost head div and meta div
    * @param  {String} header - div from lesswrong submitted posts page which contains the link to the post
@@ -72,9 +73,11 @@ define(['jquery', 'YQL', 'PostType', 'Q', 'moment'], function($, yql, PostType, 
           return q.all(promises)
             .then(function(results) {
               postsKarma = postsKarma.concat(results);
+              loadingTableUpdater.updateTable(postsTableRowId, results);
               return that.scrapeUserPosts(user, results[results.length - 1].id);
             });
         }
+        loadingTableUpdater.updateTableToCompleted(postsTableRowId);
         return postsKarma;
       });
   };

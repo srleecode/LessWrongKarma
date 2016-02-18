@@ -2,9 +2,10 @@
  * CommentScraper Module
  * @module CommentScraper
  */
-define(['jquery', 'YQL', 'CommentType', 'Q', 'moment'], function($, yql, CommentType, q, moment) {
+define(['jquery', 'YQL', 'CommentType', 'Q', 'moment', 'LoadingTableUpdater'], function($, yql, CommentType, q, moment, loadingTableUpdater) {
   var that = {};
   var commentsKarma = [];
+  var commentsTableRowId = 'commentRow';
   /**
    * Parses and retrieves information from a comment div html string
    * @param  {String} commentHtml - div from lesswrong submitted comments page which contains comment information
@@ -27,7 +28,7 @@ define(['jquery', 'YQL', 'CommentType', 'Q', 'moment'], function($, yql, Comment
     if (title.length >= 26) {
       blurb = blurb.substring(0, title.length - 4) + ' ...';
     } else {
-      blurb = blurb.substring(0, 22) + ' ...';
+      blurb = blurb.substring(0, 26) + ' ...';
     }
     var date = $('.comment-date', commentNode).first().text().replace('*', '').trim();
     var type = '';
@@ -74,9 +75,11 @@ define(['jquery', 'YQL', 'CommentType', 'Q', 'moment'], function($, yql, Comment
               return result.author === user && result.commentType === CommentType.Leaf;
             });
             commentsKarma = commentsKarma.concat(filteredResults);
+            loadingTableUpdater.updateTable(commentsTableRowId, filteredResults);
             return that.scrapeUserComments(user, filteredResults[filteredResults.length - 1].id);
           });
         }
+        loadingTableUpdater.updateTableToCompleted(commentsTableRowId);
         return commentsKarma;
       });
   };
