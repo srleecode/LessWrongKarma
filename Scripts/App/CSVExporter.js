@@ -12,27 +12,27 @@ function(statsService, moment) {
     statsService.getComments().sort(function(a, b) {
       return a.x - b.x;
     }).forEach(function(comment) {
-      csv += 'Comment,"' + moment.utc(comment.x).format('DD MMMM YYYY hh:mm:ssA') + 
+      csv += 'Comment,"' + moment.utc(comment.x).format('DD MMMM YYYY hh:mm:ssA') +
               '","' + comment.y + '","' + comment.title.replace(/(\r\n|\n|\r|,)/gm,'') + '","' + comment.blurb.replace(/(\r\n|\n|\r|,)/gm,'') + '","' +
               comment.link + '"\n';
     });
     statsService.getDiscussionPosts().sort(function(a, b) {
       return a.x - b.x;
     }).forEach(function(discussionPost) {
-        csv += 'Discussion Post,"' + moment.utc(discussionPost.x).format('DD MMMM YYYY hh:mm:ssA') + 
-              '","' + discussionPost.y + '","' + discussionPost.title.replace(/(\r\n|\n|\r|,)/gm,'') + '","","' +
-              discussionPost.link + '"\n';
+      csv += 'Discussion Post,"' + moment.utc(discussionPost.x).format('DD MMMM YYYY hh:mm:ssA') +
+            '","' + discussionPost.y + '","' + discussionPost.title.replace(/(\r\n|\n|\r|,)/gm,'') + '","","' +
+            discussionPost.link + '"\n';
     });
     return csv;
   };
-  
+
   that.getMainPointsCSV = function() {
     var csv = '';
     csv += 'Date Posted, Score, Title, Link\n';
     statsService.getMainPosts().sort(function(a, b) {
       return a.x - b.x;
     }).forEach(function(discussionPost) {
-        csv += '"' + moment.utc(discussionPost.x).format('DD MMMM YYYY hh:mm:ssA') + 
+      csv += '"' + moment.utc(discussionPost.x).format('DD MMMM YYYY hh:mm:ssA') +
               '","' + discussionPost.y + '","' + discussionPost.title.replace(/(\r\n|\n|\r|,)/gm,'') + '","' +
               discussionPost.link + '"\n';
     });
@@ -44,18 +44,11 @@ function(statsService, moment) {
     csv += 'Type, Date Posted, Total Score, Score, Title, Blurb, Link\n';
     statsService.getCumulativeStats().forEach(function(point) {
       blurb = point.blurb || '';
-      csv += '"' + point.type + '",' + moment.utc(point.x).format('DD MMMM YYYY hh:mm:ssA') + 
+      csv += '"' + point.type + '",' + moment.utc(point.x).format('DD MMMM YYYY hh:mm:ssA') +
               '",' + point.y + ',' + point.score + ',"' + point.title.replace(/(\r\n|\n|\r|,)/gm,'') + '","' + blurb.replace(/(\r\n|\n|\r|,)/gm,'') + '","' +
-              point.link + '"\n';      
+              point.link + '"\n';
     });
     return csv;
-  };
-  
-  that.getProportionsCSV = function() {
-      
-  };
-  that.getTotalsCSV = function() {
-      
   };
   return that;
 });
