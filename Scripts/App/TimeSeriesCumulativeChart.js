@@ -4,6 +4,8 @@
  */
 define(['jquery', 'highcharts', 'moment', 'StatsService'], function($, highcharts, moment, statsService) {
   var that = {};
+  var startLimit = {};
+  var endLimit = {};
   var chart = null;
   that.getChart = function() {
     return chart;
@@ -33,8 +35,8 @@ define(['jquery', 'highcharts', 'moment', 'StatsService'], function($, highchart
   that.addChart = function(id, data) {
     var firstDate = moment.utc(data[0].x).toDate();
     var lastDate = moment.utc(data[data.length - 1].x).toDate();
-    var startLimit = new Date(firstDate.getFullYear(), firstDate.getMonth(), firstDate.getDate(), 0, 0, 0, 0);
-    var endLimit = new Date(lastDate.getFullYear(), lastDate.getMonth(), lastDate.getDate(), 0, 0, 0, 0);
+    startLimit = new Date(firstDate.getFullYear(), firstDate.getMonth(), firstDate.getDate(), 0, 0, 0, 0);
+    endLimit = new Date(lastDate.getFullYear(), lastDate.getMonth(), lastDate.getDate(), 0, 0, 0, 0);
     var startDate = $('#startDate').datepicker({
       onRender: function(date) {
         return date.valueOf() < startLimit.valueOf() || date.valueOf() > endLimit.valueOf() ? 'disabled' : '';

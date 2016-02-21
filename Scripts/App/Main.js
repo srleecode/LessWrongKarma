@@ -18,32 +18,28 @@ function($, chartCreator, loadingTableUpdater, statsService, CSVExporter) {
           chartCreator.createCharts($('#selectedUser').val());
         }
       });
-      $("#timeSeriesSmallPointsDownloadLink").on("click", function(e) {
-        var $link = $("#timeSeriesSmallPointsDataLink");
+      $('#timeSeriesSmallPointsDownloadLink').on('click', function() {
+        var $link = $('#timeSeriesSmallPointsDataLink');
         var csv = CSVExporter.getCommentAndDiscussionPointsCSV();
-        
-        $link.attr("href", 'data:Application/octet-stream,' + encodeURIComponent(csv))[0].click();
+        $link.attr('href', 'data:Application/octet-stream,' + encodeURIComponent(csv))[0].click();
       });
-      
-      $("#timeSeriesSmallPointsDownloadLink").on("click", function(e) {
-        var $link = $("#timeSeriesSmallPointsDataLink");
+
+      $('#timeSeriesSmallPointsDownloadLink').on('click', function() {
+        var $link = $('#timeSeriesSmallPointsDataLink');
         var csv = CSVExporter.getCommentAndDiscussionPointsCSV();
-        
-        $link.attr("href", 'data:Application/octet-stream,' + encodeURIComponent(csv))[0].click();
+        $link.attr('href', 'data:Application/octet-stream,' + encodeURIComponent(csv))[0].click();
       });
-      
-      $("#timeSeriesLargePointsDownloadLink").on("click", function(e) {
-        var $link = $("#timeSeriesLargePointsDataLink");
+
+      $('#timeSeriesLargePointsDownloadLink').on('click', function() {
+        var $link = $('#timeSeriesLargePointsDataLink');
         var csv = CSVExporter.getMainPointsCSV();
-        
-        $link.attr("href", 'data:Application/octet-stream,' + encodeURIComponent(csv))[0].click();
+        $link.attr('href', 'data:Application/octet-stream,' + encodeURIComponent(csv))[0].click();
       });
-      
-      $("#timeSeriesCumulativeDownloadLink").on("click", function(e) {
-        var $link = $("#timeSeriesCumulativeDataLink");
+
+      $('#timeSeriesCumulativeDownloadLink').on('click', function() {
+        var $link = $('#timeSeriesCumulativeDataLink');
         var csv = CSVExporter.getCumulativeCSV();
-        
-        $link.attr("href", 'data:Application/octet-stream,' + encodeURIComponent(csv))[0].click();
+        $link.attr('href', 'data:Application/octet-stream,' + encodeURIComponent(csv))[0].click();
       });
     });
   });
