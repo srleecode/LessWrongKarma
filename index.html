@@ -9,6 +9,7 @@
         <link href="Styles/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="Styles/FontAwesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link href="Styles/cssreset.css" rel="stylesheet" type="text/css"/>
+        <link href="Styles/datepicker.css" rel="stylesheet" type="text/css"/>
         <link href="Styles/main.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
@@ -22,6 +23,7 @@
                 </span>
                 <input id="selectedUser" type="text" class="form-control" placeholder="Enter user, eg. ScottL">
             </div>   
+            
             <div id="content" class="hidden">
                 <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
                     <li class="active"><a href="#timeSeriesSmallPoints" data-toggle="tab">Time Series Comments and Discussion Posts</a></li>
@@ -33,12 +35,41 @@
                 <div id="my-tab-content" class="tab-content">
                     <div class="tab-pane active" id="timeSeriesSmallPoints">
                         <div id="timeSeriesSmallPointsChart"></div>
+                        <div class="text-center">
+                            <button id="timeSeriesSmallPointsDownloadLink" type="button" class="btn btn-default">Download To CSV</button>
+                            <a href="" id="timeSeriesSmallPointsDataLink" download="data.csv"></a>
+                        </div>
                     </div>
                     <div class="tab-pane" id="timeSeriesLargePoints">
                         <div id="timeSeriesLargePointsChart"></div>
+                        <div class="text-center">
+                            <button id="timeSeriesLargePointsDownloadLink" type="button" class="btn btn-default">Download To CSV</button>
+                            <a href="" id="timeSeriesLargePointsDataLink" download="data.csv"></a>
+                        </div>
                     </div>
                     <div class="tab-pane" id="timeSeriesCumulative">
                         <div id="timeSeriesCumulativeChart"></div>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="startDate">Start Date</label>
+                                        <input class="datepicker" data-date-format="dd/mm/yyyy" id="startDate" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="endDate">End Date</label>
+                                        <input class="datepicker" data-date-format="dd/mm/yyyy" id="endDate" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button id="timeSeriesCumulativeDownloadLink" type="button" class="btn btn-default">Download To CSV</button>
+                            <a href="" id="timeSeriesCumulativeDataLink" download="data.csv"></a>
+                        </div>
                     </div>
                     <div class="tab-pane" id="proportions">
                         <div id="proportionsChart"></div>

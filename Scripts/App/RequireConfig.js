@@ -11,12 +11,15 @@ require.config({
     highcharts: 'Lib/highcharts-4.2.1.min',
     drilldown: 'Lib/drilldown',
     moment: 'Lib/moment-2.11.2.min',
+    datetimepicker: 'Lib/bootstrap-datepicker',
     Q: 'Lib/Q-1.4.1',
     YQL: 'App/YQL',
     CommentsScraper: 'App/CommentsScraper',
     CommentType: 'App/CommentType',
     PostsScraper: 'App/PostsScraper',
     PostType: 'App/PostType',
+    StatsService: 'App/StatsService',
+    CSVExporter: 'App/CSVExporter',
     LoadingTableUpdater: 'App/LoadingTableUpdater',
     TimeSeriesSmallPointsChart: 'App/TimeSeriesSmallPointsChart',
     TimeSeriesLargePointsChart: 'App/TimeSeriesLargePointsChart',
@@ -29,6 +32,10 @@ require.config({
   shim: {
     bootstrap: {
       deps: ['jquery']
+    },
+    datetimepicker: {
+      deps: ['jquery', 'bootstrap'],
+      exports: '$.fn.datepicker'
     },
     highcharts: {
       exports: 'Highcharts',

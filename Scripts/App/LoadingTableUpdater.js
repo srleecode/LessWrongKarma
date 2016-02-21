@@ -5,15 +5,14 @@
 define('LoadingTableUpdater', ['jquery', 'moment'], function($, moment) {
   var that = {};
   that.resetTable = function() {
-      resetRow('commentRow');
-      resetRow('postRow');
+    resetRow('commentRow');
+    resetRow('postRow');
   };
-  function resetRow (id) {
+  function resetRow(id) {
     var commentRowElement = $('#' + id);
     $('#lastScraped', commentRowElement).text('N/A');
     $('#currScore', commentRowElement).text(0);
     $('#numScraped', commentRowElement).text(0);
-      
     $('#' + id).removeClass('success').addClass('active');
     $('#' + id + ' i').removeClass('fa-check').addClass('fa-cog').addClass('fa-spin');
   }
