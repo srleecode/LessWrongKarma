@@ -3,19 +3,11 @@ function($, chartCreator, loadingTableUpdater, statsService, CSVExporter) {
   $(function() {
     $(document).ready(function() {
       $('#getKarmaStatsBtn').on('click', function() {
-        loadingTableUpdater.resetTable();
-        $('#getKarmaStatsBtn').prop('disabled', true);
-        $('#selectedUser').prop('disabled', true);
-        $('#loading').removeClass('hidden');
-        $('#userNotFound').addClass('hidden');
-        $('#content').addClass('hidden');
-        statsService.scrapeData($('#selectedUser').val()).then(function() {
-          chartCreator.createCharts();
-        });
+        getUsersData($('#selectedUser').val());
       });
       $('#selectedUser').keydown(function(event) {
         if (event.keyCode === 13) {
-          chartCreator.createCharts($('#selectedUser').val());
+          getUsersData($('#selectedUser').val());
         }
       });
       $('#timeSeriesSmallPointsDownloadLink').on('click', function() {
@@ -42,5 +34,17 @@ function($, chartCreator, loadingTableUpdater, statsService, CSVExporter) {
         $link.attr('href', 'data:Application/octet-stream,' + encodeURIComponent(csv))[0].click();
       });
     });
+    
+    function getUsersData(user) {
+      loadingTableUpdater.resetTable();
+      $('#getKarmaStatsBtn').prop('disabled', true);
+      $('#selectedUser').prop('disabled', true);
+      $('#loading').removeClass('hidden');
+      $('#userNotFound').addClass('hidden');
+      $('#content').addClass('hidden');
+      statsService.scrapeData(user).then(function() {
+        chartCreator.createCharts();
+      });
+    }
   });
 });
