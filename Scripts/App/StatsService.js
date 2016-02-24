@@ -125,6 +125,14 @@ function(q, commentsScraper, postsScraper, postType, rounder) {
   that.scrapeData = function(user) {
     return q.all([commentsScraper.scrapeUserComments(user), postsScraper.scrapeUserPosts(user)])
     .then(function(data) {
+      comments = [];
+      discussionPosts = [];
+      mainPosts = [];
+      commentStats = {};
+      discussionPostStats = {};
+      mainPostStats = {};
+      totalStats = {};
+      cumulativeStats = {}; 
       if (data[0].length !== 0 || data[1].length !== 0) {
         comments = data[0];
         discussionPosts = data[1].filter(function(post) {
